@@ -2,8 +2,13 @@ import { Order, Product } from "../models";
 import { OrderItems } from "../types";
 import { Request, Response } from "../types/application.type";
 import asyncHandler from "express-async-handler";
-import { updateProduct, updateProductQuery } from "./products.controllers";
+import { updateProductQuery } from "./products.controllers";
 
+/**
+ * Create order
+ * @route POST /api/orders
+ * @access Public
+ */
 const createOrder = asyncHandler(async (req: Request, res: Response) => {
 	let orderItems = req.body;
 
@@ -29,6 +34,11 @@ const createOrder = asyncHandler(async (req: Request, res: Response) => {
 	}
 });
 
+/**
+ * Create order
+ * @route POST /api/orders
+ * @access Private to Admin
+ */
 const getAllOrders = asyncHandler(async (req: Request, res: Response) => {
 	const orders = await Order.find();
 	if (orders) {

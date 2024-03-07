@@ -2,6 +2,11 @@ import { Request, Response } from "../types/";
 import asyncHandler from "express-async-handler";
 import { Product } from "../models";
 
+/**
+ * Add Product
+ * @route POST /api/products
+ * @access Private to ADMIN
+ */
 const addProduct = asyncHandler(async (req: Request, res: Response) => {
 	let product = new Product({
 		name: req.body.name,
@@ -19,8 +24,14 @@ const addProduct = asyncHandler(async (req: Request, res: Response) => {
 	}
 });
 
+/**
+ * List of all products
+ * @route GET /api/products
+ * @access Public
+ */
 const getAllProducts = asyncHandler(async (req: Request, res: Response) => {
 	const products = await Product.find();
+
 	if (products) {
 		res.status(200).send(products);
 	} else {
@@ -29,6 +40,11 @@ const getAllProducts = asyncHandler(async (req: Request, res: Response) => {
 	}
 });
 
+/**
+ * Delete Product
+ * @route DELETE /api/products/:id
+ * @access Private to ADMIN
+ */
 const deleteProductById = asyncHandler(async (req: Request, res: Response) => {
 	const product = await Product.findById(req.params.id);
 
@@ -41,6 +57,11 @@ const deleteProductById = asyncHandler(async (req: Request, res: Response) => {
 	}
 });
 
+/**
+ * Delete Product
+ * @route PATCH /api/products/:id
+ * @access Private to ADMIN
+ */
 const updateProduct = asyncHandler(async (req: Request, res: Response) => {
 	const { id } = req.params as { id: string };
 	const { name, price, stock } = req.body as {

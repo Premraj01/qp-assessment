@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import productsRoutes from "./routes/product.routes";
 import ordersRoutes from "./routes/orders.routes";
+import usersRoutes from "./routes/users.routes";
 import { connectDB } from "./config/db";
 import dotenv from "dotenv";
 
@@ -18,6 +19,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/product/", productsRoutes);
 app.use("/api/orders/", ordersRoutes);
+app.use("/api/users/", usersRoutes);
 
 app.listen(PORT, () => {
 	console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);

@@ -1,8 +1,5 @@
 import { Request as Req, Response as Res } from "express";
 
-/**
- * Custom User interface used in combination with Express Request / Response types
- */
 interface User {
 	user?: {
 		_id: string;
@@ -12,8 +9,5 @@ interface User {
 	};
 }
 
-/**
- * Combine Express types with customer User interface
- */
 export type Request = Req & User;
 export type Response = Res & User;
