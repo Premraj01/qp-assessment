@@ -1,8 +1,8 @@
 
 ### Grocery APP
 
-**Install Depencies**: npm install
+Install Dependencies: npm install
 
-**RUN Application**: npm run start
+RUN Application: npm run start
 
 
